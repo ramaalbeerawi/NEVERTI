@@ -1,0 +1,90 @@
+boxes     Kits               Correction and Illumination Kit 3 Color Correctors and 4 Color Concealers  [1] -
+brows     Brow wax           Brow Shaping Wax  [1] -
+brows     Brow mascara       Brow Up Mascara  [4] Transparent, Auburn, Medium Brown, Dark Chocolate
+brows     Brow gel           BrowTastic Eyebrow Gel  [4] Latte Light, Auburn, Mocha Mist, Espresso Shot
+brows     Brow pencil        Eyebrow Styler Liner  [3] No. 001, No. 002, No. 003
+brushes   Face brushes       Angled Blush Brush  [1] -
+brushes   Face brushes       Angled Concealer Brush  [1] -
+brushes   Face brushes       Angled Contour Brush  [1] -
+brushes   Eye & brow brushes Angled Eyebrow Brush F02  [1] -
+brushes   Eye & brow brushes Angled Eyebrow Brush F15  [1] -
+brushes   Face brushes       Angled Foundation Brush  [1] -
+brushes   Eye & brow brushes Big Blending Brush  [1] -
+brushes   Eye & brow brushes Big Eyeshadow Brush  [1] -
+brushes   Eye & brow brushes Blending Brush  [1] -
+brushes   Face brushes       Blusher Brush  [1] -
+brushes   Eye & brow brushes Brow Sculpting Brush  [1] -
+brushes   Face brushes       Cheek Brush  [1] -
+brushes   Face brushes       Concealer and Corrector Brush  [1] -
+brushes   Face brushes       Contour Brush  [1] -
+brushes   Eye & brow brushes Crease Brush  [1] -
+brushes   Face brushes       Dual Blusher and Foundation Brush  [1] -
+brushes   Eye & brow brushes Dual Ended Eyeshadow Brush  [1] -
+brushes   Eye & brow brushes Eyeliner Brush  [1] -
+brushes   Eye & brow brushes Eyeshadow Brush  [1] -
+brushes   Face brushes       Face and Body Brush  [1] -
+brushes   Face brushes       Foundation Brush F05  [1] -
+brushes   Face brushes       Foundation Brush F11  [1] -
+brushes   Face brushes       Highlighter Brush  [1] -
+brushes   Face brushes       Liquid Blush Brush  [1] -
+brushes   Face brushes       Liquid Foundation Brush  [1] -
+brushes   Face brushes       Multi-Function Brush  [1] -
+brushes   Face brushes       Peach- Shaped Multifunctional Brush  [1] -
+brushes   Face brushes       Pencil Brush  [1] -
+brushes   Face brushes       Powder Brush F01  [1] -
+brushes   Face brushes       Powder Brush F16  [1] -
+brushes   Face brushes       Primer Brush  [1] -
+brushes   Face brushes       Round Concealer Brush  [1] -
+brushes   Face brushes       Sculpting Make Up Brush  [1] -
+brushes   Eye & brow brushes Smudge&Blending Brush  [1] -
+brushes   Face brushes       Tapered Powder Brush  [1] -
+brushes   Face brushes       Triangle Concealer Brush  [1] -
+eyes      Eyeliner           Eye Define Liner  [6] No. 001, No. 002, No. 003, No. 004, No. 005, No. 006
+eyes      Eyeshadow          Eyeshadow Creamy Stick  [1] -
+eyes      Eyeliner           Highest Shine Eye Liner  [1] -
+eyes      Mascara            Lash Me Up Mascara  [1] -
+eyes      Mascara            Mascara Beauty Boost Length & Define  [1] -
+eyes      Mascara            Mascara Beauty Boost Volume & Lift  [1] -
+eyes      Mascara            Mascara Big Volume Lashes Manifest  [1] -
+eyes      Mascara            Mascara Max Length Lashes Manifest  [1] -
+eyes      Eyeliner           Matte Dipliner Black  [1] -
+eyes      Eyeliner           Midnight Whisper Gel Eyeliner  [1] -
+face      Contour            Contour Balm Stick  [3] Soft Sculpt, Defined Bronze, Deep Dimension
+face      Blush              Cream Lush Blush  [6] Adrenaline, Cool Rose, Raspberry Kiss, Be Happy, Pink Berry, Hypnose
+face      Contour            Creamy Dimension Contrast Contour  [3] Cool Bronze, Mocha, Terracotta Tan
+face      Blush              Creamy Dimension Waterproof Blush  [7] Frosted Pink, Antique Rose, Peachy Pit, Sweet Touch, Lost In Love, Mrs Right, Peony Pink
+face      Powder             Creamy Dimension Waterproof Powder  [8] Porcelain Beige, Fair Pink, Neutral, Almond Beige, Warm Beige, Medium Beige, Soft Mocha, Warm Honey
+face      Blush              Face Illusion Blush Palette  [1] -
+face      Highlighter        Face Illusion Cream Highlighter Palette  [1] -
+face      Contour            Face Illusion Highlighter Contour Palette  [1] -
+face      Blush              Liquid Blush  [6] Be Happy, Dreamcatcher, Lost In Love, Intense Pink, Orange In Fire, Pink Hope
+face      Highlighter        Liquid Highlighter  [3] Double Gleam, Rosy Glow, Bronze Glaze
+face      Setting spray      Make Up Prime and Fix Spray  [1] -
+face      Primer             Matte Mizer Primer Base  [1] -
+face      Primer             Matte Primer Base  [1] -
+face      Foundation         Moisturizing Natural Glow Weightless Foundation  [10] Pink Beige, Ivory, Soft Beige, Neutral, Creamy Beige, Mocha, Honey, Hazelnut, Golden Brown, Chestnut
+face      Foundation         Natural Matte Flawless Foundation  [8] No. 002, No. 004, No. 005, No. 006, No. 007, No. 008, No. 009, No. 010
+face      Concealer          Pure Perfection Concealer Pen  [3] No. 001, No. 002, No. 003
+face      Corrector          Radiant Creamy Corrector  [4] Peach, Mango, Vanilla, Almond
+face      Concealer          Radiant Creamy Cover Concealer  [8] Light Fair, Vanilla, Warm Nude, Light Medium, Natural Beige, Medium Beige, Soft Beige, Toffee
+face      Contour            Sculpt Shaping Stick Contour  [3] Oasis Breeze, Desert Dunes, Moroccan Nights
+face      Powder             Setting Loose Powder  [4] No. R01, No. R02, No. R03, No. R04
+face      Concealer          Skin Smooth Serum Concealer  [8] Light Sand, Light Neutral, Porcelain, Soft Nude, Creamy Beige, Warm Beige, Warm Almond, Mocha
+face      Foundation         Soft Focus Feature Foundation  [9] Pinky Nude, Hazel Noir, Soft Nude, Warm Ivory, Caramel Romance, Mocha Debut, Deep Mystery, Golden Talkies, Summer Shine
+face      BB cream           Tinted Gel Cream BB  [8] Classic Ivory, Gold Beige, Warm Beige, Porcelain, Medium Beige, Shell Beige, Light Golden, Warm Almond
+face      Highlighter        Waterproof Highlighter  [2] Champagne, Rose Quartz
+face      Powder             Wet And Dry Powder  [8] Light Porcelain, Light Pink, Neutral, Nude Beige, Light Cream, Medium Beige, Light Caramel, Golden Honey
+lips      Lip gloss          3D Plumping Intense Lipgloss  [16] Gloss Me, Cotton Candy, Bubblegum, Kissable Lips, Chocoholic, Va-Va-Voom, Gossip Girl, Flirty Fizz, Dose Of Chocolate, XXL Kiss, Honey Moon, Browny Dream, Dazzling Plump, She Flirty, Silky Touch, Sassy Look
+lips      Lip gloss          Be Allure Up Shine Lipgloss  [6] Candy Glow, Bombshell, Temp Me, Glossy Vibe, Be In Star, Glam Up
+lips      Lip balm           Creamy Lip Balm  [6] Creamy Dreamy, Cheerful Glow, Honey Milk, Cotton Candy, Butter Kiss, Pink Mallow
+lips      Lipstick           Kiss Adore Shiny Lipstick  [12] Undertones, Cosmic Love, So Much Drama, Oh Lala Lady, Dazzling Diva, Dirty Date, Trends Pink, Queen Of Hearts, Independent Day, Triple Kiss, Wowpout, Tempting Red
+lips      Lip liner          Kiss Couture Waterproof Liner  [10] No. 001, No. 002, No. 003, No. 004, No. 005, No. 006, No. 007, No. 008, No. 009, No. 010
+lips      Lipstick           Let Lip Rejoice Lipstick  [10] Bold Beauty, Pinky Touch, Met Gala, Catwalk Lady, Be Phenomenal, Pink Coffee, Testaceous, Bare Beauty, Vermillion, Be Brave
+lips      Lipstick           Limitless Kiss Lipstick  [11] Be Fearless, Own Your Power, Keep It Real, Dare To Dream, Live Laugh Love, High Standards, Better Than Yours, Stay Fabulous, Beauty Bloom, Lady In Red, Royal Ruby
+lips      Lip gloss          Lip Cocktail  [4] Raspberry Kiss, Apricot, Grape, Pomegranate
+lips      Lip liner          Liptrace Liner  [22] No. 001, No. 002, No. 003, No. 004, No. 005, No. 006, No. 007, No. 008, No. 009, No. 010, No. 011, No. 012, No. 013, No. 014, No. 015, No. 016, No. 017, No. 018, No. 019, No. 020, No. 021, No. 022
+lips      Lipstick           Matt Idole Lipstick  [16] Free Spirit, Pink Promise, Sweet Chaos, Peach Play, Wild Heart, Self Made, Power Kiss, First Move, Scarlet Queen, Kiss Me Later, Nefertiti Rose, Limitless Kiss, Keep Dreaming, D For Diva, Matte Affair, Adore Me
+lips      Lipstick           Matt Mallow Lipstick  [12] Be Nude, Bridesmaid, Hug Me, Venus, Nude Charm, Silent Elegance, Pink Lies, Daisy Darling, Flirty Flicks, Secret Code, Beloved Berry, Color in Fire
+lips      Lipstick           Matte Couture Liquid Lipstick  [12] Nude Romance, Lady Dior, Rose Classique, Cinnamon Cashmere, Coral Silk, Chiffon, Rose Lace, Pure Silk, Nudly Song, Tango Red, Orchid Desire, Femme Fatale
+lips      Lip gloss          Soft Tint Lipgloss  [6] No. 001, No. 002, No. 003, No. 004, No. 005, No. 006
+skincare  Sunscreen          Sunscreen 50 SPF  [1] -

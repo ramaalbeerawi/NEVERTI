@@ -1,0 +1,111 @@
+<!doctype html>
+<!--
+  tools/sample_shades.html
+  Measures the real color of each shade from its product photo
+  (the swatch smear next to the product). Runs in a browser, no install.
+
+  Used by tools/sample_shades.mjs, which opens this page in headless Edge
+  and saves the result to .tmp/shade-hex.json.
+-->
+<meta charset="utf-8">
+<pre id="out">running</pre>
+<script type="module">
+  import { LINES } from "../js/products-data.js";
+
+  const SIZE = 160;
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = SIZE;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+
+  const load = (src) =>
+    new Promise((ok, fail) => {
+      const img = new Image();
+      img.onload = () => ok(img);
+      img.onerror = fail;
+      img.src = "../" + src;
+    });
+
+  const hex = (r, g, b) => "#" + [r, g, b].map((v) => Math.round(v).toString(16).padStart(2, "0")).join("").toUpperCase();
+
+  // Method for try-on colors (lips, liner, blush, correctors): look at the
+  // whole photo, take the most common color groups, and pick the first one
+  // with real color (saturation ≥ 0.25). Packaging is usually white/cream/grey.
+  // If nothing is colorful (black liner, light concealer), keep the most common.
+  async function sampleVivid(src) {
+    const img = await load(src);
+    ctx.clearRect(0, 0, SIZE, SIZE);
+    ctx.drawImage(img, 0, 0, SIZE, SIZE);
+    const { data } = ctx.getImageData(0, 0, SIZE, SIZE);
+    const bins = new Map();
+    for (let i = 0; i < data.length; i += 4) {
+      const [r, g, b] = [data[i], data[i + 1], data[i + 2]];
+      if (r > 236 && g > 236 && b > 236) continue;
+      const key = ((r >> 4) << 8) | ((g >> 4) << 4) | (b >> 4);
+      const bin = bins.get(key) || { n: 0, r: 0, g: 0, b: 0 };
+      bin.n++; bin.r += r; bin.g += g; bin.b += b;
+      bins.set(key, bin);
+    }
+    const top = [...bins.values()].sort((a, b) => b.n - a.n).slice(0, 7)
+      .map((v) => [v.r / v.n, v.g / v.n, v.b / v.n]);
+    const sat = ([r, g, b]) => (Math.max(r, g, b) - Math.min(r, g, b)) / (Math.max(r, g, b) || 1);
+    let pick = top.find((c) => sat(c) >= 0.25);
+
+    // Second pass: the color is only a thin line (e.g. a pencil swirl), so it
+    // never makes the top groups. Look only at the colorful pixels.
+    if (!pick) {
+      const vivid = new Map();
+      for (let i = 0; i < data.length; i += 4) {
+        const c = [data[i], data[i + 1], data[i + 2]];
+        if (sat(c) < 0.25 || Math.max(...c) > 245) continue;
+        const key = ((c[0] >> 4) << 8) | ((c[1] >> 4) << 4) | (c[2] >> 4);
+        const bin = vivid.get(key) || { n: 0, r: 0, g: 0, b: 0 };
+        bin.n++; bin.r += c[0]; bin.g += c[1]; bin.b += c[2];
+        vivid.set(key, bin);
+      }
+      const best = [...vivid.values()].sort((a, b) => b.n - a.n)[0];
+      if (best && best.n >= 20) pick = [best.r / best.n, best.g / best.n, best.b / best.n];
+    }
+    pick ||= top[0];
+    return pick ? hex(...pick) : null;
+  }
+
+  async function sample(src) {
+    const img = await load(src);
+    ctx.clearRect(0, 0, SIZE, SIZE);
+    ctx.drawImage(img, 0, 0, SIZE, SIZE);
+    const { data } = ctx.getImageData(0, 0, SIZE, SIZE);
+    const bins = new Map();
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        // Skip the middle column, where the bottle and cap stand
+        if (x > SIZE * 0.36 && x < SIZE * 0.64) continue;
+        const i = (y * SIZE + x) * 4;
+        const [r, g, b] = [data[i], data[i + 1], data[i + 2]];
+        if (r > 238 && g > 238 && b > 238) continue; // white background
+        const key = ((r >> 4) << 8) | ((g >> 4) << 4) | (b >> 4);
+        const bin = bins.get(key) || { n: 0, r: 0, g: 0, b: 0 };
+        bin.n++; bin.r += r; bin.g += g; bin.b += b;
+        bins.set(key, bin);
+      }
+    }
+    // The most common color outside the bottle = the swatch
+    let best = null;
+    for (const bin of bins.values()) if (!best || bin.n > best.n) best = bin;
+    return best ? hex(best.r / best.n, best.g / best.n, best.b / best.n) : null;
+  }
+
+  const result = {};
+  for (const line of LINES) {
+    if (line.shades.length < 2 && !line.tryOn) continue; // single products need no swatch
+    // Concealers keep the first method (it reads their light swatch well);
+    // correctors are colorful, so they use the vivid method.
+    // Skin-tone products (foundation, BB cream, powder, concealer) are light and
+    // low in color, so they also keep the first method.
+    const skinTone = ["foundation", "concealer"].includes(line.tryOn) && line.type !== "Corrector" && !/pen/i.test(line.name);
+    const vivid = line.tryOn && !skinTone;
+    for (const s of line.shades) {
+      try { result[s.id] = await (vivid ? sampleVivid(s.image) : sample(s.image)); } catch { result[s.id] = null; }
+    }
+  }
+  document.getElementById("out").textContent = "RESULT" + JSON.stringify(result);
+</script>

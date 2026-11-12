@@ -1,0 +1,50 @@
+<!doctype html>
+<!--
+  tools/review_shades.html
+  Review sheet for shade colors: each shade photo next to the main color
+  groups found in it (numbered). Used to pick the right color by eye when
+  the automatic pick is wrong. Open through a local server:
+  /tools/review_shades.html?lines=lip-cocktail,liquid-blush
+-->
+<meta charset="utf-8">
+<style>
+  body { margin: 0; font: 12px system-ui; background: #fff; }
+  .row { display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-bottom: 1px solid #ddd; }
+  .row img { width: 96px; height: 96px; object-fit: contain; }
+  .id { width: 300px; }
+  .chip { width: 64px; height: 64px; display: grid; place-items: end start; padding: 2px; color: #000; text-shadow: 0 0 2px #fff; font-weight: 700; }
+</style>
+<div id="out"></div>
+<script type="module">
+  import { LINES } from "../js/products-data.js";
+  const wanted = (new URLSearchParams(location.search).get("lines") || "").split(",");
+  const SIZE = 160;
+  const c = document.createElement("canvas"); c.width = c.height = SIZE;
+  const ctx = c.getContext("2d", { willReadFrequently: true });
+  const hex = (r, g, b) => "#" + [r, g, b].map((v) => Math.round(v).toString(16).padStart(2, "0")).join("").toUpperCase();
+  const out = document.getElementById("out");
+
+  const load = (src) => new Promise((ok, fail) => {
+    const img = new Image(); img.onload = () => ok(img); img.onerror = fail; img.src = src;
+  });
+  const shades = LINES.filter((l) => wanted.includes(l.id)).flatMap((l) => l.shades);
+  for (const line of [{ shades }]) {
+    for (const s of line.shades) {
+      const img = await load("../" + s.image);
+      ctx.clearRect(0, 0, SIZE, SIZE); ctx.drawImage(img, 0, 0, SIZE, SIZE);
+      const d = ctx.getImageData(0, 0, SIZE, SIZE).data;
+      const bins = new Map();
+      for (let i = 0; i < d.length; i += 4) {
+        const [r, g, b] = [d[i], d[i + 1], d[i + 2]];
+        if (r > 236 && g > 236 && b > 236) continue;
+        const k = ((r >> 4) << 8) | ((g >> 4) << 4) | (b >> 4);
+        const v = bins.get(k) || { n: 0, r: 0, g: 0, b: 0 }; v.n++; v.r += r; v.g += g; v.b += b; bins.set(k, v);
+      }
+      const top = [...bins.values()].sort((a, b) => b.n - a.n).slice(0, 7)
+        .map((v) => hex(v.r / v.n, v.g / v.n, v.b / v.n));
+      out.insertAdjacentHTML("beforeend", `<div class="row"><img src="../${s.image}"><span class="id">${s.id}</span>${top
+        .map((h, i) => `<span class="chip" style="background:${h}">${i}<br>${h}</span>`).join("")}</div>`);
+    }
+  }
+  document.title = "done";
+</script>

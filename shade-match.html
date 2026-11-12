@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find my shade | Neverti</title>
+  <meta name="description" content="Take a selfie and find the Neverti foundation, concealer, blush and lipstick shades that suit your skin.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&display=swap">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script type="module" src="js/header.js"></script>
+  <script type="module" src="js/shade-match.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main id="main" class="match container">
+    <header class="match__head">
+      <p class="label">Find my shade</p>
+      <h1 class="section-title">Your skin, <em>your shade</em></h1>
+      <p>Take a selfie or upload a photo. We read the color of your cheeks and forehead, then suggest the closest foundation and concealer, and a blush and lipstick that suit you. You can adjust the result by hand.</p>
+    </header>
+
+    <div class="match__grid">
+      <!-- ========== Left: the photo ========== -->
+      <div class="match__stage-col">
+        <div class="tabs tryon__sources" role="tablist" aria-label="Choose a photo">
+          <button class="tab" type="button" role="tab" data-source="camera" aria-selected="false" tabindex="-1">Take a selfie</button>
+          <button class="tab" type="button" role="tab" data-source="upload" aria-selected="false" tabindex="-1">Upload a photo</button>
+          <button class="tab" type="button" role="tab" data-source="model" aria-selected="true">Our model</button>
+        </div>
+
+        <div class="stage" id="stage">
+          <canvas id="canvas" role="img" aria-label="Your photo with the places we measured"></canvas>
+          <video id="video" playsinline muted hidden></video>
+
+          <div class="stage__status" id="status" role="status" hidden>
+            <p id="status-text"></p>
+            <div class="stage__status-actions" id="status-actions"></div>
+          </div>
+
+          <div class="stage__tools">
+            <button class="btn stage__btn" type="button" id="capture" hidden>Take photo</button>
+            <label class="btn stage__btn" id="change-photo" hidden>
+              Change photo
+              <input class="visually-hidden" type="file" id="file" accept="image/*">
+            </label>
+          </div>
+        </div>
+        <p class="tryon__privacy">Everything happens on your device. No photo is uploaded. For the best result, use natural daylight, face a window, keep your face bare and turn off any camera filter.</p>
+      </div>
+
+      <!-- ========== Right: the result ========== -->
+      <section class="match__panel stone-panel" id="result" aria-labelledby="result-title" hidden>
+        <h2 id="result-title">Your skin</h2>
+
+        <div class="skin" aria-live="polite">
+          <span class="skin__swatch" id="skin-swatch" aria-hidden="true"></span>
+          <div>
+            <p class="skin__depth" id="skin-depth"></p>
+            <p class="skin__under" id="skin-under"></p>
+            <p class="skin__confidence" id="skin-confidence"></p>
+          </div>
+        </div>
+        <ul class="match__warnings" id="warnings" role="status"></ul>
+
+        <fieldset class="adjust">
+          <legend>Adjust it by hand</legend>
+          <label>Lighter <input type="range" id="adj-depth" min="-12" max="12" step="1" value="0" aria-label="Skin depth, lighter to deeper"> Deeper</label>
+          <label>Cooler <input type="range" id="adj-under" min="-12" max="12" step="1" value="0" aria-label="Undertone, cooler to warmer"> Warmer</label>
+          <p class="adjust__hint">Tip: tap a spot on the photo to measure that spot instead.</p>
+          <button class="link-btn" type="button" id="adj-reset">Reset to the measured skin</button>
+        </fieldset>
+
+        <div id="picks" class="picks"></div>
+
+        <div class="match__actions">
+          <button class="btn btn--primary" type="button" id="try-picks">Try my picks on</button>
+          <button class="btn" type="button" id="save">Save my shade</button>
+          <button class="btn" type="button" id="save-signin" hidden>Sign in to keep it in my account</button>
+        </div>
+        <p class="form__message" id="save-message" role="status"></p>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

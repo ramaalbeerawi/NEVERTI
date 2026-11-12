@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materials lab | Neverti</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&display=swap">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script type="module" src="js/header.js"></script>
+  <script type="module" src="js/tryon/lab.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main id="main" class="lab container">
+    <header class="lab__head">
+      <p class="label">Materials lab</p>
+      <h1 class="section-title">How every product <em>looks</em></h1>
+      <p>Every Neverti material on our model, before and after. Use it to check that a matte looks matte, a gloss looks wet and an oil looks glassy. Change the shade or the strength to compare.</p>
+      <div class="lab__tools">
+        <label class="lab__toggle"><input type="checkbox" id="debug"> Show the regions the makeup is drawn on</label>
+        <p class="lab__progress" id="progress" role="status">Loading…</p>
+      </div>
+    </header>
+
+    <section class="lab__compare" aria-labelledby="compare-title">
+      <h2 id="compare-title">Side by side</h2>
+      <p>Each row uses the same shade and strength, so only the finish changes. They must look different from each other.</p>
+      <div id="compare"></div>
+    </section>
+
+    <h2 class="lab__section-title">One by one</h2>
+    <section aria-label="Materials">
+      <div class="lab__grid" id="grid"></div>
+    </section>
+
+    <section class="lab__colors" aria-labelledby="colors-title">
+      <h2 id="colors-title">Shade colors</h2>
+      <p>Each color was measured from the swatch in the product photo. If one looks wrong on the model, pick the right color here. It is saved in this browser and used by the try-on.</p>
+      <div id="colors"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

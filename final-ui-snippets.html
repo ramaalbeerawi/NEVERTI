@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Neverti – final UI snippets (intro, hero, sliding panels)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,800;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Reference code. Paths are relative to the project root (assets/images/...). Adapt names and links to the real site. */
+:root{--burgundy:#57242B;--cream-text:#F2E0C3;--label:#7A4848;--text-2:#6B3A3A}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:var(--burgundy);background-color:#EDE2D6;
+  background-image:linear-gradient(rgba(245,238,230,.4),rgba(245,238,230,.4)),url(assets/images/bg-stone.jpg);
+  background-size:cover;background-position:center;background-attachment:fixed}
+.btn{display:inline-flex;align-items:center;gap:9px;background:transparent;border:1px solid var(--burgundy);color:var(--burgundy);padding:11px 20px;border-radius:999px;cursor:pointer;font:500 12px 'Manrope',sans-serif;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s}
+.btn:hover{background:var(--burgundy);color:var(--cream-text)}
+.btn-fill{background:var(--burgundy);color:var(--cream-text)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes draw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ---------- 1. OPENING INTRO: the real lipstick writes NEVERTI ---------- */
+.intro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;
+  background-color:#EDE2D6;background-image:linear-gradient(rgba(245,238,230,.4),rgba(245,238,230,.4)),url(assets/images/bg-stone.jpg);background-size:cover;background-position:center;
+  transition:transform 1.1s cubic-bezier(.7,0,.2,1)}
+.intro.out{transform:translateY(-100%)}
+.intro-label{margin:0;font-size:12px;letter-spacing:.45em;text-transform:uppercase;color:var(--label);animation:rise .9s ease .2s both}
+.intro-wrap{width:100%;max-width:1200px;padding-top:min(190px,18vh)}
+.intro svg{display:block;overflow:visible;width:100%}
+.bl{fill:none;stroke:url(#texP);stroke-width:26;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;animation:draw .3s ease-in-out both}
+.pen-scale{transform:rotate(-35deg) scale(.36)}
+@media (max-width:700px){.pen-scale{transform:rotate(-35deg) scale(.3)}}
+.intro-tag{margin:0;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(20px,2vw,28px);color:var(--text-2);animation:rise .9s ease 5.4s both}
+.intro-foot{position:absolute;left:48px;right:48px;bottom:34px;display:flex;align-items:center;gap:24px}
+.intro-line{flex:1;height:1px;background:rgba(87,36,43,.18)}
+.intro-line i{display:block;height:1px;background:var(--burgundy);transform-origin:0 50%;animation:grow 6840ms linear both}
+
+/* ---------- 2. HERO (tight top, no big empty space, static name filled with the lipstick texture) ---------- */
+.hero{max-width:1280px;margin:0 auto;padding:8px 48px 0}
+.hero-label{margin:0 0 4px;font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--label)}
+.hero h1{margin:0;line-height:0;width:min(100%,1000px)}
+.hero h1 svg{display:block;overflow:visible;width:100%}
+.hero-tag{margin:14px 0 0;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(20px,2vw,28px);color:var(--text-2)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+
+/* ---------- 3. SLIDING PANELS (replace the overlapping stacked photos) ---------- */
+.acc-wrap{max-width:1280px;margin:0 auto;padding:44px 48px 90px}
+.acc{display:flex;gap:12px;height:540px}
+.acc .p{position:relative;display:block;overflow:hidden;flex:1;color:#F7EEE4;text-decoration:none;box-shadow:0 18px 36px rgba(60,25,30,.2);transition:flex .75s cubic-bezier(.2,.7,.2,1)}
+.acc .p:first-child{flex:4}          /* Lips is open by default */
+.acc:hover .p{flex:1}
+.acc .p:hover,.acc .p:focus-visible{flex:4}
+.acc .p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.acc .p .t{position:absolute;left:18px;bottom:16px;white-space:nowrap;text-shadow:0 2px 12px rgba(30,10,14,.6)}
+.acc .p .n{display:block;font-family:'Playfair Display',Georgia,serif;font-size:34px}
+.acc .p .c{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+@media (max-width:760px){
+  .acc{flex-direction:column;height:auto}
+  .acc .p,.acc .p:first-child,.acc:hover .p,.acc .p:hover{flex:none;height:220px}
+}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. INTRO (put this right after <body> on index.html) ============ -->
+<div class="intro" id="intro" role="dialog" aria-label="Neverti opening">
+  <p class="intro-label">Inspired by Nefertiti</p>
+  <div class="intro-wrap">
+    <svg viewBox="0 0 1100 260" role="img" aria-label="NEVERTI">
+      <defs>
+        <pattern id="texP" patternUnits="userSpaceOnUse" x="0" y="0" width="1100" height="260">
+          <image href="assets/images/lipstick-texture.jpg" x="-150" y="-330" width="1400" height="933" preserveAspectRatio="none"/>
+        </pattern>
+        <filter id="bevelP" x="-4%" y="-12%" width="108%" height="130%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="9" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+          <feGaussianBlur in="rough" stdDeviation="2" result="soft"/>
+          <feSpecularLighting in="soft" surfaceScale="6" specularConstant="1.1" specularExponent="22" lighting-color="#FFE3E3" result="spec"><feDistantLight azimuth="230" elevation="46"/></feSpecularLighting>
+          <feComposite in="spec" in2="rough" operator="in" result="specIn"/>
+          <feComposite in="rough" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.75" k4="0" result="lit"/>
+          <feDropShadow in="lit" dx="2" dy="6" stdDeviation="4" flood-color="#57242B" flood-opacity="0.35"/>
+        </filter>
+      </defs>
+      <!-- the letters: 11 strokes drawn one after another, filled with the real lipstick texture -->
+      <g filter="url(#bevelP)">
+        <path class="bl" pathLength="100" d="M45 210 L45 50 L155 210 L155 50" style="animation-delay:0.40s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M305 50 L195 50 L195 210 L305 210" style="animation-delay:0.87s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M195 130 L285 130" style="animation-delay:1.34s;animation-duration:0.24s"></path>
+        <path class="bl" pathLength="100" d="M345 50 L400 210 L455 50" style="animation-delay:1.71s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M605 50 L495 50 L495 210 L605 210" style="animation-delay:2.18s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M495 130 L585 130" style="animation-delay:2.65s;animation-duration:0.24s"></path>
+        <path class="bl" pathLength="100" d="M645 210 L645 50 L710 50 Q755 50 755 90 Q755 130 710 130 L645 130" style="animation-delay:3.02s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M700 130 L755 210" style="animation-delay:3.49s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M795 50 L905 50" style="animation-delay:3.96s;animation-duration:0.24s"></path>
+        <path class="bl" pathLength="100" d="M850 50 L850 210" style="animation-delay:4.33s;animation-duration:0.24s"></path>
+        <path class="bl" pathLength="100" d="M1000 50 L1000 210" style="animation-delay:4.70s;animation-duration:0.24s"></path>
+      </g>
+      <!-- the real lipstick photo follows the tip of each stroke (SMIL, same timing as the CSS draw animation) -->
+      <g opacity="0" style="filter:drop-shadow(10px 18px 12px rgba(60,20,25,.38))">
+        <animateMotion path="M135 150 L45 210" begin="0.05s" dur="0.3s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M45 210 L45 50 L155 210 L155 50" begin="0.40s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M155 50 L305 50" begin="0.74s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M305 50 L195 50 L195 210 L305 210" begin="0.87s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M305 210 L195 130" begin="1.21s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M195 130 L285 130" begin="1.34s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M285 130 L345 50" begin="1.58s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M345 50 L400 210 L455 50" begin="1.71s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M455 50 L605 50" begin="2.05s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M605 50 L495 50 L495 210 L605 210" begin="2.18s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M605 210 L495 130" begin="2.52s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M495 130 L585 130" begin="2.65s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M585 130 L645 210" begin="2.89s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M645 210 L645 50 L710 50 Q755 50 755 90 Q755 130 710 130 L645 130" begin="3.02s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M645 130 L700 130" begin="3.36s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M700 130 L755 210" begin="3.49s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M755 210 L795 50" begin="3.83s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M795 50 L905 50" begin="3.96s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M905 50 L850 50" begin="4.20s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M850 50 L850 210" begin="4.33s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M850 210 L1000 50" begin="4.57s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M1000 50 L1000 210" begin="4.70s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M1000 210 L1170 20" begin="5.02s" dur="0.6s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animate attributeName="opacity" from="0" to="1" begin="0.05s" dur="0.25s" fill="freeze"></animate>
+<animate attributeName="opacity" from="1" to="0" begin="5.06s" dur="0.5s" fill="freeze"></animate>
+        <g class="pen-scale"><g transform="translate(-4 -587)">
+          <!-- lipstick-red-sm.png is 700x601, its tip is at the top-right; rotated 180deg the tip lands on the contact point -->
+          <image href="assets/images/lipstick-red-sm.png" x="0" y="0" width="700" height="601" transform="rotate(180 350 300.5)"/>
+        </g></g>
+      </g>
+    </svg>
+  </div>
+  <p class="intro-tag">Elegance and strength in every shade.</p>
+  <div class="intro-foot"><div class="intro-line"><i></i></div><button class="btn" id="introSkip" type="button">Skip</button></div>
+</div>
+<script>
+/* plays once per browser session; ?intro=1 forces it; skipped for reduced-motion users */
+(function(){
+  var el=document.getElementById('intro'); if(!el) return;
+  if(location.search.indexOf('intro=1')>-1){try{sessionStorage.removeItem('nvIntroSeen')}catch(e){}}
+  var seen=false; try{seen=sessionStorage.getItem('nvIntroSeen')==='1'}catch(e){}
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(seen||reduce){el.remove();return}
+  document.body.style.overflow='hidden';
+  var timer,done=false;
+  function finish(){
+    if(done)return; done=true; clearTimeout(timer);
+    el.classList.add('out');
+    try{sessionStorage.setItem('nvIntroSeen','1')}catch(e){}
+    setTimeout(function(){el.remove();document.body.style.overflow=''},1200);
+  }
+  timer=setTimeout(finish,6840);
+  document.getElementById('introSkip').addEventListener('click',finish);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')finish()});
+})();
+</script>
+
+<!-- ============ 2. HERO ============ -->
+<section class="hero">
+  <p class="hero-label">Inspired by Nefertiti</p>
+  <h1>
+    <svg viewBox="0 0 1100 260" role="img" aria-label="NEVERTI">
+      <defs>
+        <pattern id="texH" patternUnits="userSpaceOnUse" x="0" y="0" width="1100" height="260">
+          <image href="assets/images/lipstick-texture.jpg" x="-150" y="-330" width="1400" height="933" preserveAspectRatio="none"/>
+        </pattern>
+        <filter id="bevelH" x="-4%" y="-10%" width="108%" height="125%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="4" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+          <feGaussianBlur in="rough" stdDeviation="2.4" result="soft"/>
+          <feSpecularLighting in="soft" surfaceScale="7" specularConstant="1.1" specularExponent="24" lighting-color="#FFE3E3" result="spec"><feDistantLight azimuth="230" elevation="46"/></feSpecularLighting>
+          <feComposite in="spec" in2="rough" operator="in" result="specIn"/>
+          <feComposite in="rough" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.7" k4="0" result="lit"/>
+          <feDropShadow in="lit" dx="2" dy="6" stdDeviation="4.5" flood-color="#57242B" flood-opacity="0.35"/>
+        </filter>
+      </defs>
+      <text x="20" y="205" textLength="1060" lengthAdjust="spacing" fill="url(#texH)" filter="url(#bevelH)"
+        style="font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:210px">NEVERTI</text>
+    </svg>
+  </h1>
+  <p class="hero-tag">Elegance and strength in every shade.</p>
+  <div class="hero-actions"><a class="btn btn-fill" href="collection.html?c=new">Shop new arrivals</a><a class="btn" href="try-on.html">Try on</a></div>
+</section>
+
+<!-- ============ 3. SLIDING PANELS ============ -->
+<div class="acc-wrap">
+  <nav class="acc" aria-label="Collections">
+    <a class="p" href="collection.html?c=lips"><img src="assets/images/collection-lips.jpg" alt="" style="object-position:46% 50%"><span class="t"><span class="n">Lips</span><span class="c">16 products →</span></span></a>
+    <a class="p" href="collection.html?c=face"><img src="assets/images/collection-face-TEMP.jpg" alt="" style="object-position:48% 50%"><span class="t"><span class="n">Face</span><span class="c">16 products →</span></span></a>
+    <a class="p" href="collection.html?c=eyes"><img src="assets/images/collection-eyes.jpg" alt="" style="object-position:22% 50%"><span class="t"><span class="n">Eyes</span><span class="c">14 products →</span></span></a>
+    <a class="p" href="collection.html?c=brows"><img src="assets/images/collection-brows.jpg" alt="" style="object-position:24% 50%"><span class="t"><span class="n">Brows</span><span class="c">12 products →</span></span></a>
+  </nav>
+</div>
+
+</body>
+</html>

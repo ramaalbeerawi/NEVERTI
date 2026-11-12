@@ -1,0 +1,186 @@
+/* ===== 1) الألوان كمتغيرات (tokens) حتى نغيّرها من مكان واحد ===== */
+:root {
+  --powder: #E9E1E3;   /* خلفية بلون البودرة */
+  --surface: #F6F1F2;  /* سطح المرآة قبل تشغيل الكاميرا */
+  --rim: #CDBEC3;      /* إطار المرآة */
+  --ink: #34232B;      /* لون النص الأساسي (برقوقي غامق) */
+  --muted: #7A6670;    /* نص ثانوي */
+  --focus: #6B3A55;    /* حدود التركيز للوحة المفاتيح */
+}
+
+/* الوضع الداكن */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --powder: #241A1F;
+    --surface: #30242A;
+    --rim: #4A3941;
+    --ink: #F1E6EA;
+    --muted: #B8A3AC;
+    --focus: #E3B6CB;
+  }
+}
+:root[data-theme="dark"] {
+  --powder: #241A1F;
+  --surface: #30242A;
+  --rim: #4A3941;
+  --ink: #F1E6EA;
+  --muted: #B8A3AC;
+  --focus: #E3B6CB;
+}
+
+/* ===== 2) الأساسيات ===== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--powder);
+  color: var(--ink);
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 3rem;
+}
+
+/* ===== 3) العنوان ===== */
+.intro h1 {
+  font-family: "Italiana", serif;
+  font-weight: 400;
+  font-size: clamp(2.25rem, 7vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+.intro p {
+  margin: 0.5rem 0 1.5rem;
+  color: var(--muted);
+}
+
+/* ===== 4أ) زرّا اختيار المصدر (كاميرا / موديل) ===== */
+.source {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--rim);
+}
+.source-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  background: transparent;
+  color: var(--muted);
+  font: 500 0.9375rem/1.2 "Figtree", system-ui, sans-serif;
+  cursor: pointer;
+}
+.source-btn[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--powder);
+}
+.source-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ===== 4) المرآة ===== */
+.mirror {
+  position: relative;
+  margin: 0 auto;
+  aspect-ratio: 4 / 3;
+  background: var(--surface);
+  border: 6px solid var(--rim);
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+/* نخفي الفيديو الأصلي، ونعرض الـ canvas فقط */
+#video { display: none; }
+
+#output {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* قلب الصورة أفقيًا حتى تتصرف مثل المرآة الحقيقية */
+  transform: scaleX(-1);
+}
+
+/* في وضع الصورة: لا نقلب الصورة، ونحدّ العرض لأن الصورة طولية */
+.mirror.is-photo { max-width: 26rem; }
+.mirror.is-photo #output { transform: none; }
+
+.status {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(52, 35, 43, 0.78);
+  color: #F6F1F2;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  max-width: calc(100% - 2rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.status:empty { display: none; }
+
+/* ===== 5) أزرار الألوان على شكل رأس أحمر الشفاه ===== */
+.shades {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.shade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 0.25rem 0.6rem;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--muted);
+  font: 500 0.875rem/1.2 "Figtree", system-ui, sans-serif;
+  cursor: pointer;
+}
+
+/* الرأس المائل لأحمر الشفاه، مرسوم بـ CSS فقط */
+.tip {
+  width: 34px;
+  height: 52px;
+  background:
+    linear-gradient(100deg, rgba(255,255,255,0.35) 0 18%, transparent 40%),
+    var(--shade);
+  border-radius: 6px 6px 3px 3px;
+  clip-path: polygon(0 32%, 100% 0, 100% 100%, 0 100%);
+  transition: transform 160ms ease;
+}
+
+/* الزر المختار: الرأس يرتفع قليلًا والنص يصبح أغمق */
+.shade[aria-pressed="true"] { color: var(--ink); font-weight: 600; }
+.shade[aria-pressed="true"] .tip { transform: translateY(-6px); }
+
+.shade:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tip { transition: none; }
+}
+
+@media (max-width: 420px) {
+  .shades { gap: 0.25rem; }
+  .shade { font-size: 0.8125rem; }
+}

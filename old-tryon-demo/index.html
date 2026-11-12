@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lip Shade Mirror</title>
+
+  <!-- الخطوط: Italiana للعنوان، و Figtree للنصوص -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Italiana&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <h1>Lip shade mirror</h1>
+      <p>Pick a shade and look into the camera.</p>
+    </header>
+
+    <!-- اختيار المصدر: الكاميرا أو صورة الموديل -->
+    <div class="source" role="group" aria-label="What to try the shade on">
+      <button class="source-btn" data-mode="camera" aria-pressed="true">My camera</button>
+      <button class="source-btn" data-mode="photo" aria-pressed="false">Try on our model</button>
+    </div>
+
+    <!-- المرآة: الفيديو مخفي، ونرسم كل إطار على الـ canvas مع أحمر الشفاه -->
+    <div class="mirror" id="mirror">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="output" aria-label="Your camera with the selected lipstick shade"></canvas>
+      <p id="status" class="status" role="status">Loading face model…</p>
+    </div>
+
+    <!-- أزرار الألوان: كل زر يحمل لونه في data-color -->
+    <div class="shades" role="group" aria-label="Lipstick shades">
+      <button class="shade" data-color="#B81E2C" aria-pressed="true">
+        <span class="tip" style="--shade:#B81E2C"></span>Tango Red
+      </button>
+      <button class="shade" data-color="#D9706A" aria-pressed="false">
+        <span class="tip" style="--shade:#D9706A"></span>Coral Silk
+      </button>
+      <button class="shade" data-color="#BF5F74" aria-pressed="false">
+        <span class="tip" style="--shade:#BF5F74"></span>Chiffon
+      </button>
+      <button class="shade" data-color="#A66666" aria-pressed="false">
+        <span class="tip" style="--shade:#A66666"></span>Nude Romance
+      </button>
+    </div>
+  </main>
+
+  <!-- type="module" يسمح لنا باستخدام import لتحميل MediaPipe من CDN -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>

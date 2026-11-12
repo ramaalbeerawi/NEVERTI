@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neverti | Elegance and strength in every shade</title>
+  <meta name="description" content="Neverti makeup, named after Queen Nefertiti. Lips, face, eyes and brows, with a virtual try-on and a shade finder.">
+
+  <!-- Fonts: Playfair Display (headings, logo) + Manrope (everything else) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&display=swap">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/intro.css">
+
+  <!-- Shared parts (offers bar, navbar, footer, bag, login) + this page -->
+  <script type="module" src="js/header.js"></script>
+  <script type="module" src="js/home.js"></script>
+</head>
+<body data-page="home">
+  <div class="intro" id="intro" role="dialog" aria-label="Neverti opening">
+  <p class="intro-label">Inspired by Nefertiti</p>
+  <div class="intro-wrap">
+    <svg viewBox="0 0 1100 260" role="img" aria-label="NEVERTI">
+      <defs>
+        <pattern id="texP" patternUnits="userSpaceOnUse" x="0" y="0" width="1100" height="260">
+          <image href="assets/images/lipstick-texture.jpg" x="-150" y="-330" width="1400" height="933" preserveAspectRatio="none"/>
+        </pattern>
+        <filter id="bevelP" x="-4%" y="-12%" width="108%" height="130%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="9" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+          <feGaussianBlur in="rough" stdDeviation="2" result="soft"/>
+          <feSpecularLighting in="soft" surfaceScale="6" specularConstant="1.1" specularExponent="22" lighting-color="#FFE3E3" result="spec"><feDistantLight azimuth="230" elevation="46"/></feSpecularLighting>
+          <feComposite in="spec" in2="rough" operator="in" result="specIn"/>
+          <feComposite in="rough" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.75" k4="0" result="lit"/>
+          <feDropShadow in="lit" dx="2" dy="6" stdDeviation="4" flood-color="#57242B" flood-opacity="0.35"/>
+        </filter>
+      </defs>
+      <!-- the letters: 11 strokes drawn one after another, filled with the real lipstick texture -->
+      <g filter="url(#bevelP)">
+        <path class="bl" pathLength="100" d="M45 210 L45 50 L155 210 L155 50" style="animation-delay:0.40s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M305 50 L195 50 L195 210 L305 210" style="animation-delay:0.87s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M195 130 L285 130" style="animation-delay:1.34s;animation-duration:0.24s"></path>
+        <path class="bl" pathLength="100" d="M345 50 L400 210 L455 50" style="animation-delay:1.71s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M605 50 L495 50 L495 210 L605 210" style="animation-delay:2.18s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M495 130 L585 130" style="animation-delay:2.65s;animation-duration:0.24s"></path>
+        <path class="bl" pathLength="100" d="M645 210 L645 50 L710 50 Q755 50 755 90 Q755 130 710 130 L645 130" style="animation-delay:3.02s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M700 130 L755 210" style="animation-delay:3.49s;animation-duration:0.34s"></path>
+        <path class="bl" pathLength="100" d="M795 50 L905 50" style="animation-delay:3.96s;animation-duration:0.24s"></path>
+        <path class="bl" pathLength="100" d="M850 50 L850 210" style="animation-delay:4.33s;animation-duration:0.24s"></path>
+        <path class="bl" pathLength="100" d="M1000 50 L1000 210" style="animation-delay:4.70s;animation-duration:0.24s"></path>
+      </g>
+      <!-- the real lipstick photo follows the tip of each stroke (SMIL, same timing as the CSS draw animation) -->
+      <g opacity="0" style="filter:drop-shadow(10px 18px 12px rgba(60,20,25,.38))">
+        <animateMotion path="M135 150 L45 210" begin="0.05s" dur="0.3s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M45 210 L45 50 L155 210 L155 50" begin="0.40s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M155 50 L305 50" begin="0.74s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M305 50 L195 50 L195 210 L305 210" begin="0.87s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M305 210 L195 130" begin="1.21s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M195 130 L285 130" begin="1.34s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M285 130 L345 50" begin="1.58s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M345 50 L400 210 L455 50" begin="1.71s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M455 50 L605 50" begin="2.05s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M605 50 L495 50 L495 210 L605 210" begin="2.18s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M605 210 L495 130" begin="2.52s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M495 130 L585 130" begin="2.65s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M585 130 L645 210" begin="2.89s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M645 210 L645 50 L710 50 Q755 50 755 90 Q755 130 710 130 L645 130" begin="3.02s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M645 130 L700 130" begin="3.36s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M700 130 L755 210" begin="3.49s" dur="0.34s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M755 210 L795 50" begin="3.83s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M795 50 L905 50" begin="3.96s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M905 50 L850 50" begin="4.20s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M850 50 L850 210" begin="4.33s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M850 210 L1000 50" begin="4.57s" dur="0.12s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M1000 50 L1000 210" begin="4.70s" dur="0.24s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animateMotion path="M1000 210 L1170 20" begin="5.02s" dur="0.6s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.42 0 0.58 1"></animateMotion>
+        <animate attributeName="opacity" from="0" to="1" begin="0.05s" dur="0.25s" fill="freeze"></animate>
+<animate attributeName="opacity" from="1" to="0" begin="5.06s" dur="0.5s" fill="freeze"></animate>
+        <g class="pen-scale"><g transform="translate(-4 -587)">
+          <!-- lipstick-red-sm.png is 700x601, its tip is at the top-right; rotated 180deg the tip lands on the contact point -->
+          <image href="assets/images/lipstick-red-sm.png" x="0" y="0" width="700" height="601" transform="rotate(180 350 300.5)"/>
+        </g></g>
+      </g>
+    </svg>
+  </div>
+  <p class="intro-tag">Elegance and strength in every shade.</p>
+  <div class="intro-foot"><div class="intro-line"><i></i></div><button class="btn" id="introSkip" type="button">Skip</button></div>
+</div>
+<script>
+/* plays once per browser session; ?intro=1 forces it; skipped for reduced-motion users */
+(function(){
+  var el=document.getElementById('intro'); if(!el) return;
+  if(location.search.indexOf('intro=1')>-1){try{sessionStorage.removeItem('nvIntroSeen')}catch(e){}}
+  var seen=false; try{seen=sessionStorage.getItem('nvIntroSeen')==='1'}catch(e){}
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(seen||reduce){el.remove();return}
+  document.body.style.overflow='hidden';
+  var timer,done=false;
+  function finish(){
+    if(done)return; done=true; clearTimeout(timer);
+    el.classList.add('out');
+    try{sessionStorage.setItem('nvIntroSeen','1')}catch(e){}
+    setTimeout(function(){el.remove();document.body.style.overflow=''},1200);
+  }
+  timer=setTimeout(finish,6840);
+  document.getElementById('introSkip').addEventListener('click',finish);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')finish()});
+})();
+</script>
+
+  <div id="site-header"></div>
+
+  <main id="main">
+    <!-- Hero: the name filled with the lipstick texture, tight under the header -->
+    <section class="home-hero container" aria-label="Neverti">
+      <p class="label home-hero__label">Inspired by Nefertiti</p>
+      <h1>
+      <svg viewBox="0 0 1100 260" role="img" aria-label="NEVERTI">
+        <defs>
+          <pattern id="texH" patternUnits="userSpaceOnUse" x="0" y="0" width="1100" height="260">
+            <image href="assets/images/lipstick-texture.jpg" x="-150" y="-330" width="1400" height="933" preserveAspectRatio="none"/>
+          </pattern>
+          <filter id="bevelH" x="-4%" y="-10%" width="108%" height="125%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="4" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+            <feGaussianBlur in="rough" stdDeviation="2.4" result="soft"/>
+            <feSpecularLighting in="soft" surfaceScale="7" specularConstant="1.1" specularExponent="24" lighting-color="#FFE3E3" result="spec"><feDistantLight azimuth="230" elevation="46"/></feSpecularLighting>
+            <feComposite in="spec" in2="rough" operator="in" result="specIn"/>
+            <feComposite in="rough" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.7" k4="0" result="lit"/>
+            <feDropShadow in="lit" dx="2" dy="6" stdDeviation="4.5" flood-color="#57242B" flood-opacity="0.35"/>
+          </filter>
+        </defs>
+        <text x="20" y="205" textLength="1060" lengthAdjust="spacing" fill="url(#texH)" filter="url(#bevelH)"
+          style="font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:210px">NEVERTI</text>
+      </svg>
+  </h1>
+      <p class="home-hero__tag">Elegance and strength in every shade.</p>
+      <div class="home-hero__actions">
+        <a class="btn btn--primary" href="#new">Shop new arrivals</a>
+        <a class="btn" href="try-on.html">Try on</a>
+      </div>
+    </section>
+
+    <!-- Collections: four sliding panels (filled by js/home.js) -->
+    <section class="panels-wrap container" id="collections" aria-label="Collections">
+      <nav class="panels" id="panels" aria-label="Collections"></nav>
+    </section>
+
+    <!-- 2. New arrivals: two slow rows, from the real store -->
+    <section class="section" id="new" aria-labelledby="new-title">
+      <div class="container section-head">
+        <h2 class="section-title" id="new-title">New <em>arrivals</em></h2>
+        <a class="btn" href="collection.html?c=lips&amp;sort=new">Shop new lips</a>
+      </div>
+      <p class="label container marquee__label">Lips</p>
+      <div class="marquee" data-row="lips"></div>
+      <p class="label container marquee__label">Face</p>
+      <div class="marquee marquee--reverse" data-row="face"></div>
+    </section>
+
+    <!-- 4. Best sellers: the store's own order and real ratings -->
+    <section class="section" id="best" aria-labelledby="best-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" id="best-title">Best <em>sellers</em></h2>
+        </div>
+        <div class="product-grid" id="best-grid"></div>
+      </div>
+    </section>
+
+    <!-- 5. Try-on invitation -->
+    <section class="section" id="tryon-invite" aria-labelledby="invite-title">
+      <div class="container invite">
+        <figure class="invite__photo">
+          <span class="img-slot" data-label="Our model">
+            <img src="assets/images/model-web.jpg" alt="Our model, bare faced, before makeup" width="1408" height="1760" loading="lazy">
+          </span>
+        </figure>
+        <div class="invite__text">
+          <p class="label">Virtual try-on</p>
+          <h2 class="section-title" id="invite-title">See it before <em>you buy it</em></h2>
+          <p>Put any lipstick, liner, blush or foundation on our model, on your own photo, or live on your camera. Everything happens on your device, and no photo is uploaded.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="try-on.html">Try on</a>
+            <a class="btn" href="shade-match.html">Find my shade</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. The red edit -->
+    <section class="section section--flush" id="red" aria-labelledby="red-title">
+      <div class="red-edit">
+        <span class="img-slot" data-label="The red edit">
+          <img src="assets/images/collection-lips.jpg" alt="" style="object-position: 35% 50%" loading="lazy">
+        </span>
+        <div class="red-edit__text">
+          <p class="label">The red edit</p>
+          <h2 class="section-title" id="red-title">Liner, matte, <em>gloss.</em></h2>
+          <a class="btn btn--primary" href="collection.html?c=lips&amp;type=Lipstick">Shop lips</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Our story -->
+    <section class="section story" id="story" aria-labelledby="story-title">
+      <div class="container story__inner">
+        <p class="label" id="nefertiti">Inspired by Nefertiti</p>
+        <h2 class="story__quote" id="story-title">Named after Queen Nefertiti, a timeless symbol of beauty and strength.</h2>
+        <p>Neverti makes color for every face: the first line of liner, the last touch of gloss, and everything in between. Every shade is made to look as good on you as it does in the tube, which is why you can try it on before you buy it.</p>
+      </div>
+    </section>
+
+    <!-- 8. Help: shipping, returns, FAQ (sample text for this concept site) -->
+    <section class="section" id="help" aria-labelledby="help-title">
+      <div class="container help">
+        <h2 class="section-title" id="help-title">Good to <em>know</em></h2>
+        <div class="help__grid">
+          <article id="shipping">
+            <h3>Shipping</h3>
+            <p>Orders are packed within two to four working days. Delivery time and fees will be shown at checkout once payments are connected.</p>
+          </article>
+          <article id="returns">
+            <h3>Returns</h3>
+            <p>Unopened products can be returned within 14 days. Opened makeup can't be returned for hygiene reasons.</p>
+          </article>
+          <article id="faq">
+            <h3>Questions</h3>
+            <details><summary>Do I need an account to browse?</summary><p>No. You only sign in when you add something to your bag.</p></details>
+            <details><summary>Is my photo uploaded in the try-on?</summary><p>Never. The photo stays on your device.</p></details>
+            <details><summary>How do I choose my foundation shade?</summary><p>Use <a href="shade-match.html">Find my shade</a>. It reads your skin from a selfie and suggests the closest shades.</p></details>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

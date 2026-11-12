@@ -1,0 +1,9 @@
+{
+  "name": "neverti-tools",
+  "private": true,
+  "type": "module",
+  "description": "Helper scripts for the Neverti site (data, testing). Not part of the website.",
+  "devDependencies": {
+    "playwright-core": "^1.65.0"
+  }
+}

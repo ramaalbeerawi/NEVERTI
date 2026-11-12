@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Collection | Neverti</title>
+  <meta name="description" content="Shop Neverti makeup by collection: lips, face, eyes and brows.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&display=swap">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script type="module" src="js/header.js"></script>
+  <script type="module" src="js/collection.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main id="main" class="collection-page">
+    <div class="container sheets">
+      <!-- Three blank pages are "thrown" in first, then the main page lands on top -->
+      <span class="sheets__paper stone-panel" aria-hidden="true"></span>
+      <span class="sheets__paper stone-panel" aria-hidden="true"></span>
+      <span class="sheets__paper stone-panel" aria-hidden="true"></span>
+
+      <div class="sheet stone-panel">
+        <div class="sheet__content" id="collection">
+          <!-- Filled by js/collection.js -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
